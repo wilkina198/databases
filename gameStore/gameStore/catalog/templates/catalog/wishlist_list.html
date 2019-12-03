@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>List of Games on Coming Soon</h1>
+{% if wishlist_list %}
+<ul>
+    {% for wishlist in wishlist_list %}
+    <li>
+        {{ wishlist.name }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

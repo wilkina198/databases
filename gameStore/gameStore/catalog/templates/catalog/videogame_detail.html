@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Video Game: {{ videogame.name }}</h1>
+
+<p><strong>Company:</strong> {{ videogame.company }}</p>
+<p><strong>Summary:</strong> {{ videogame.summary }}</p>
+<p><strong>Genre:</strong> {% for genre in videogame.genre.all %}{{genre}}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<p><strong>Console:</strong> {{ videogame.console }}
+{% if videogame.singleplayer %}
+<p>Single player</p>{% endif %}
+{% if videogame.multiplayer %}
+<p>Multiplayer</p>{% endif %}
+<p><font color = 'white'>I'm a gnome and you've been gnomed!!!!!</font></p>
+<p><strong>Cost:<b> {{ videogame.price }}</b>
+    
+    <div style="margin-left:20px;margin-top:20px">
+        <h4>Copies of {{ videogame.name }}</h4>
+        
+        {% if videogame.videogameinstance_set.all %}
+        {% for copy in videogame.videogameinstance_set.all %}
+        <hr>
+        {% if copy.condition == "N" %}
+        <p><strong>Condition:</strong> New </p>
+        {% elif copy.condition == "U" %}
+        <p><strong>Condition:</strong> Used </p>
+        {% else %}
+        <p><strong>Condition:</strong> Damaged </p>
+        <p><font color = 'red'>This product will have a reduced price due to it being damaged.</font></p>
+        <p><font color = 'red'>Price change will vary.</font></p>
+        {% endif %}
+        
+        <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+        
+        {% endfor %}
+        {% else %}
+        <p>We are all out of this product. We appologise for any inconvenience</p>
+        {% endif %}
+        
+    </div>
+    {% endblock %}

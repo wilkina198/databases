@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Brother: {{ brothers.name }}</h1>
+
+<p><strong>Status:</strong> {{ brothers.get_status_display }}</p>
+<p><strong>Phone Number:</strong> {{ brothers.phone_number }}</p>
+<p><strong>Email:</strong> {{ brothers.email}}</p>
+
+{% endblock %}

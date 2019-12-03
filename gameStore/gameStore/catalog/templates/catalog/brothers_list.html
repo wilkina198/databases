@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>List of Brothers</h1>
+{% if brothers_list %}
+<ul>
+    {% for brothers in brothers_list %}
+    <li>
+        <a href="{{ brothers.get_absolute_url }}">{{ brothers.name }}</a> ({{brothers.status}})
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>There are no brothers.</p>
+{% endif %}
+{% endblock %}

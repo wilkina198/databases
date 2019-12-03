@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>List of Events</h1>
+{% if events_list %}
+<ul>
+    {% for events in events_list %}
+    <li>
+        <a href="{{ events.get_absolute_url }}">{{ events.name }}</a> ({{events.time}}) <font color = green>{{events.location}}</font>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>There are no events.</p>
+{% endif %}
+{% endblock %}
